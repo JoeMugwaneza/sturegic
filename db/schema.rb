@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170718200926) do
 
-
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "icon"
@@ -66,8 +65,8 @@ ActiveRecord::Schema.define(version: 20170718200926) do
     t.string "username"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.boolean "admin"
-    t.boolean "agent"
+    t.boolean "admin", default: false
+    t.boolean "agent", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 20170718200926) do
     t.string "sex"
     t.string "martial_status"
     t.string "tel"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["martial_status"], name: "index_users_on_martial_status"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
