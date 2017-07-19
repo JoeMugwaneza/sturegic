@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718120833) do
+ActiveRecord::Schema.define(version: 20170718200926) do
+
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "abbreviation"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -81,8 +83,14 @@ ActiveRecord::Schema.define(version: 20170718120833) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "country_id"
+    t.string "reg_no"
+    t.string "sex"
+    t.string "martial_status"
+    t.string "tel"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["martial_status"], name: "index_users_on_martial_status"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["sex"], name: "index_users_on_sex"
   end
 
 end
